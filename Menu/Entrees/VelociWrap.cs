@@ -1,16 +1,32 @@
-﻿using System.Collections.Generic;
+﻿/* VelociWrap.cs
+ * Author: Brenden Levi
+ */
+
+using System.Collections.Generic;
 
 namespace DinoDiner.Menu.Entrees
 {
+    /// <summary>
+    /// VelociWrap Class
+    /// </summary>
     public class VelociWrap
     {
+        /// <summary>
+        /// Bools used to hold ingredients
+        /// </summary>
         private bool lettuce = true;
         private bool dressing = true;
         private bool cheese = true;
 
+        /// <summary>
+        /// Double containing the Price and Calories set in the class constructor
+        /// </summary>
         public double Price { get; set; }
         public uint Calories { get; set; }
 
+        /// <summary>
+        /// Ingredients which uses bools to add said ingredients
+        /// </summary>
         public List<string> Ingredients
         {
             get
@@ -23,22 +39,34 @@ namespace DinoDiner.Menu.Entrees
             }
         }
 
+        /// <summary>
+        /// Class constructor setting price and calories
+        /// </summary>
         public VelociWrap()
         {
             this.Price = 6.86;
             this.Calories = 356;
         }
 
+        /// <summary>
+        /// Sets dressing bool to false so it will not be added to ingredients
+        /// </summary>
         public void HoldDressing()
         {
             this.dressing = false;
         }
 
+        /// <summary>
+        /// Sets lettuce bool to false so it will not be added to ingredients
+        /// </summary>
         public void HoldLettuce()
         {
             this.lettuce = false;
         }
 
+        /// <summary>
+        /// Sets cheese bool to false so it will not be added to ingredients
+        /// </summary>
         public void HoldCheese()
         {
             this.cheese = false;
