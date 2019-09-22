@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Side.cs
+ * Author: Nathan Bean
+ * Modified by: Brenden Levi
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
