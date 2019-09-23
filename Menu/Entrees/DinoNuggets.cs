@@ -9,13 +9,8 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// DinoNuggets Class
     /// </summary>
-    public class DinoNuggets
+    public class DinoNuggets : Entree
     {
-        /// <summary>
-        /// Doubles containing the Price and Calories set in the class constructor.
-        /// </summary>
-        public double Price { get; set; }
-        public uint Calories { get; set; }
 
         /// <summary>
         /// Int to contain the total number of nuggets
@@ -25,7 +20,7 @@ namespace DinoDiner.Menu.Entrees
         /// <summary>
         /// Ingredients which uses bools to add said ingredients
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {

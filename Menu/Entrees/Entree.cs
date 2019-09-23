@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Entree.cs
+ * Author: Brenden Levi
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +24,7 @@ namespace DinoDiner.Menu.Entrees
         /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public List<string> Ingredients { get; }
+        public virtual List<string> Ingredients { get; }
 
     }
 }

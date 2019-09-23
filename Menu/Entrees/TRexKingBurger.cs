@@ -9,7 +9,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// TRexKingBurger Class
     /// </summary>
-    public class TRexKingBurger
+    public class TRexKingBurger : Entree
     {
         /// <summary>
         /// Bools used to hold ingredients
@@ -24,15 +24,9 @@ namespace DinoDiner.Menu.Entrees
         private bool mayo = true;
 
         /// <summary>
-        /// Double containing the Price and Calories set in the class constructor
-        /// </summary>
-        public double Price { get; set; }
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// Ingredients which uses bools to add said ingredients
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {

@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// PrehistoricPBJ Class
     /// </summary>
-    public class PrehistoricPBJ
+    public class PrehistoricPBJ : Entree
     {
         /// <summary>
         /// Bools used to hold ingredients
@@ -19,15 +19,9 @@ namespace DinoDiner.Menu.Entrees
         private bool jelly = true;
 
         /// <summary>
-        /// Doubles containing the Price and Calories set in the class constructor
-        /// </summary>
-        public double Price { get; set; }
-        public uint Calories { get; set; }
-
-        /// <summary>
         /// Ingredients which uses bools to add said ingredients
         /// </summary>
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
