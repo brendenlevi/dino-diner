@@ -1,15 +1,25 @@
-﻿/* Side.cs
- * Author: Nathan Bean
- * Modified by: Brenden Levi
+﻿/* Drink.cs
+ * Author: Brenden Levi
  */
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu.Drinks
 {
-    public abstract class Side
+    public enum SodasaurusFlavor
+    {
+        Cola,
+        Orange,
+        Vanilla,
+        Chocolate,
+        RootBeer,
+        Cherry,
+        Lime
+    }
+
+    public abstract class Drink
     {
         /// <summary>
         /// Gets and sets the price
@@ -22,6 +32,11 @@ namespace DinoDiner.Menu.Sides
         public uint Calories { get; set; }
 
         /// <summary>
+        /// Gets or sets the ice
+        /// </summary>
+        public bool Ice { get; set; }
+
+        /// <summary>
         /// Gets the ingredients list
         /// </summary>
         public virtual List<string> Ingredients { get; }
@@ -31,5 +46,12 @@ namespace DinoDiner.Menu.Sides
         /// </summary>
         public virtual Size Size { get; set; }
 
+        /// <summary>
+        /// Sets Ice bool to false so it will not be added to ingredients
+        /// </summary>
+        public void HoldIce()
+        {
+            this.Ice = false;
+        }
     }
 }
