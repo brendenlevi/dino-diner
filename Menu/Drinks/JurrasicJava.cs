@@ -14,7 +14,7 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets and Sets the RoomForCream bool
         /// </summary>
-        private bool RoomForCream { get; set; } = false;
+        private bool SpaceForCream { get; set; } = false;
 
         /// <summary>
         /// Gets and Sets the Decaf bool
@@ -65,7 +65,8 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Class constructor setting size and then Price and Calories are updated
+        /// Class constructor setting size to small and ice false 
+        /// and then Price and Calories are updated
         /// </summary>
         public JurrasicJava()
         {
@@ -84,9 +85,9 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Sets Ice bool to true
         /// </summary>
-        public void LeaveRoomForCream()
+        public void LeaveSpaceForCream()
         {
-            this.RoomForCream = true;
+            this.SpaceForCream = true;
         }
 
         /// <summary>

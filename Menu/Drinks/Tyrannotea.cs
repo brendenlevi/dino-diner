@@ -14,12 +14,23 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets and Sets the Lemon bool
         /// </summary>
-        private bool Lemon { get; set; } = false;
+        public bool Lemon { get; set; } = false;
 
         /// <summary>
         /// Gets and Sets the Sweet bool
         /// </summary>
-        private bool Sweet { get; set; } = false;
+        private bool sweet;
+        public bool Sweet {
+            get
+            {
+                return sweet;
+            }
+            set
+            {
+                sweet = value;
+                this.Size = this.Size; // Updates calories after value change
+            }
+        }
 
         /// <summary>
         /// Updates Size, Price, and Calories on a value change.
@@ -44,6 +55,10 @@ namespace DinoDiner.Menu.Drinks
                         Price = 1.99;
                         Calories = 32;
                         break;
+                }
+                if (Sweet)
+                {
+                    Calories *= 2;
                 }
             }
             get
@@ -83,12 +98,11 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Sets Sweet bool to true so it will update price and add to ingredients
+        /// Sets Lemon bool to false so it will be removed from ingredients
         /// </summary>
-        public void AddSweet()
+        public void HoldLemon()
         {
-            this.Sweet = true;
-            this.Price *= 2;
+            this.Lemon = false;
         }
     }
 }

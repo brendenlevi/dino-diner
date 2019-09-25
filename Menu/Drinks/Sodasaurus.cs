@@ -1,4 +1,4 @@
-﻿/* Sodasaurus .cs
+﻿/* Sodasaurus.cs
  * Author: Brenden Levi
  */
 
@@ -14,7 +14,11 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets and Sets the Flavor
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        private SodasaurusFlavor flavor;
+        public SodasaurusFlavor Flavor {
+            get { return flavor; }
+            set { flavor = value; }
+        }
 
         /// <summary>
         /// Updates Size, Price, and Calories on a value change.
@@ -60,7 +64,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Class constructor setting size and then Price and Calories are updated
+        /// Class constructor setting size to small and then Price and Calories are updated
         /// </summary>
         public Sodasaurus()
         {

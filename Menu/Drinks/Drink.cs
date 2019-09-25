@@ -8,17 +8,6 @@ using System.Text;
 
 namespace DinoDiner.Menu.Drinks
 {
-    public enum SodasaurusFlavor
-    {
-        Cola,
-        Orange,
-        Vanilla,
-        Chocolate,
-        RootBeer,
-        Cherry,
-        Lime
-    }
-
     public abstract class Drink
     {
         /// <summary>
@@ -34,7 +23,7 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets or sets the ice
         /// </summary>
-        public bool Ice { get; set; }
+        public bool Ice { get; set; } = true;
 
         /// <summary>
         /// Gets the ingredients list

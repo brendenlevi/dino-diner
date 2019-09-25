@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Size.cs
+ * Author: Brenden
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
