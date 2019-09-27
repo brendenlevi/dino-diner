@@ -14,7 +14,7 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets and Sets the Lemon bool
         /// </summary>
-        private bool Lemon { get; set; } = false;
+        public bool Lemon { get; set; } = false;
 
         /// <summary>
         /// Updates Size, Price, and Calories on a value change.

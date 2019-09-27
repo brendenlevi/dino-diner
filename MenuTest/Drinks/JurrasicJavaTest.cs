@@ -5,112 +5,129 @@
 using Xunit;
 using DinoDiner.Menu.Drinks;
 using DinoDiner.Menu;
+using System.Collections.Generic;
 
 namespace MenuTest.Drinks
 {
     public class JurrasicJavaTest
     {
-        // The correct default price, calories, ice, size, lemon, and sweet properties.
+        // The correct default price, calories, ice, size, and SpaceForCream properties.
         [Fact]
         public void ShouldhaveCorrectDefaultPrice()
         {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.Equal<double>(.99, tea.Price);
+            JurrasicJava java = new JurrasicJava();
+            Assert.Equal<double>(.59, java.Price);
         }
 
         [Fact]
         public void ShouldhaveCorrectDefaultCalories()
         {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.Equal<uint>(8, tea.Calories);
+            JurrasicJava java = new JurrasicJava();
+            Assert.Equal<uint>(2, java.Calories);
         }
 
         [Fact]
         public void ShouldhaveCorrectDefaultIce()
         {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.True(tea.Ice);
+            JurrasicJava java = new JurrasicJava();
+            Assert.False(java.Ice);
         }
 
         [Fact]
         public void ShouldhaveCorrectDefaultSize()
         {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.Equal<Size>(Size.Small, tea.Size);
+            JurrasicJava java = new JurrasicJava();
+            Assert.Equal<Size>(Size.Small, java.Size);
         }
 
         [Fact]
-        public void ShouldhaveCorrectDefaultLemon()
+        public void ShouldhaveCorrectSpaceForCream()
         {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.False(tea.Lemon);
-        }
-
-        [Fact]
-        public void ShouldhaveCorrectDefaultSweet()
-        {
-            Tyrannotea tea = new Tyrannotea();
-            Assert.False(tea.Sweet);
+            JurrasicJava java = new JurrasicJava();
+            Assert.False(java.SpaceForCream);
         }
 
         // The correct price and calories after changing to small, medium, and large sizes.
         [Fact]
         public void ShouldHaveCorrectPriceAfterSettingSmall()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Medium;
-            tea.Size = Size.Small;
-            Assert.Equal<double>(0.99, tea.Price);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Medium;
+            java.Size = Size.Small;
+            Assert.Equal<double>(.59, java.Price);
         }
 
         [Fact]
         public void ShouldHaveCorrectCaloriesAfterSettingSmall()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Medium;
-            tea.Size = Size.Small;
-            Assert.Equal<uint>(8, tea.Calories);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Medium;
+            java.Size = Size.Small;
+            Assert.Equal<uint>(2, java.Calories);
         }
 
         [Fact]
         public void ShouldHaveCorrectPriceAfterSettingMedium()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Medium;
-            Assert.Equal<double>(1.49, tea.Price);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Medium;
+            Assert.Equal<double>(.99, java.Price);
         }
 
         [Fact]
         public void ShouldHaveCorrectCaloriesAfterSettingMedium()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Medium;
-            Assert.Equal<uint>(16, tea.Calories);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Medium;
+            Assert.Equal<uint>(4, java.Calories);
         }
 
         [Fact]
         public void ShouldHaveCorrectPriceAfterSettingLarge()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Large;
-            Assert.Equal<double>(1.99, tea.Price);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Large;
+            Assert.Equal<double>(1.49, java.Price);
         }
 
         [Fact]
         public void ShouldHaveCorrectCaloriesAfterSettingLarge()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Large;
-            Assert.Equal<uint>(32, tea.Calories);
+            JurrasicJava java = new JurrasicJava();
+            java.Size = Size.Large;
+            Assert.Equal<uint>(8, java.Calories);
         }
 
-        // That invoking HoldIce() results in the Ice property being false.
+        // That invoking AddIce() results in the Ice property being true
         [Fact]
-        public void ShouldHaveFalseIceAfterHoldIce()
+        public void ShouldHaveTrueIceAfterAddIce()
         {
-            Tyrannotea tea = new Tyrannotea();
-            tea.HoldIce();
-            Assert.False(tea.Ice);
+            JurrasicJava java = new JurrasicJava();
+            java.AddIce();
+            Assert.True(java.Ice);
+        }
+
+        // That invoking LeaveSpaceForCream() results 
+        // in the SpaceForCream property being true.
+
+        [Fact]
+        public void ShouldHaveTrueSpaceForCreamAfterLeaveSpaceForCream()
+        {
+            JurrasicJava java = new JurrasicJava();
+            java.LeaveSpaceForCream();
+            Assert.True(java.SpaceForCream);
+        }
+
+        // The correct ingredients are given.
+
+        [Fact]
+        public void ShouldHaveCorrectDefaultIngredients()
+        {
+            JurrasicJava java = new JurrasicJava();
+            List<string> ingredients = java.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Coffee", ingredients);
+            Assert.Equal<int>(2, ingredients.Count);
         }
     }
 }

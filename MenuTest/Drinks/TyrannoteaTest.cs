@@ -5,6 +5,7 @@
 using Xunit;
 using DinoDiner.Menu.Drinks;
 using DinoDiner.Menu;
+using System.Collections.Generic;
 
 namespace MenuTest.Drinks
 {
@@ -180,6 +181,45 @@ namespace MenuTest.Drinks
             tea.Sweet = true;
             tea.Sweet = false;
             Assert.Equal<uint>(32, tea.Calories);
+        }
+
+        // The correct ingredients are given
+        [Fact]
+        public void ShouldHaveCorrectDefaultIngredients()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            List<string> ingredients = tea.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Tea", ingredients);
+            Assert.DoesNotContain<string>("Lemon", ingredients);
+            Assert.DoesNotContain<string>("Cane Sugar", ingredients);
+            Assert.Equal<int>(2, ingredients.Count);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectIngredientsAfterAddingLemon()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.AddLemon();
+            List<string> ingredients = tea.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Tea", ingredients);
+            Assert.Contains<string>("Lemon", ingredients);
+            Assert.DoesNotContain<string>("Cane Sugar", ingredients);
+            Assert.Equal<int>(3, ingredients.Count);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectIngredientsAfterAddingSweet()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.Sweet = true;
+            List<string> ingredients = tea.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Tea", ingredients);
+            Assert.DoesNotContain<string>("Lemon", ingredients);
+            Assert.Contains<string>("Cane Sugar", ingredients);
+            Assert.Equal<int>(3, ingredients.Count);
         }
     }
 }

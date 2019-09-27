@@ -5,6 +5,7 @@
 using Xunit;
 using DinoDiner.Menu.Drinks;
 using DinoDiner.Menu;
+using System.Collections.Generic;
 
 namespace MenuTest.Drinks
 {
@@ -154,6 +155,18 @@ namespace MenuTest.Drinks
             Sodasaurus soda = new Sodasaurus();
             soda.HoldIce();
             Assert.False(soda.Ice);
+        }
+
+        // The correct ingredients are given
+        [Fact]
+        public void ShouldHaveCorrectDefaultIngredients()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            List<string> ingredients = soda.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Natural Flavors", ingredients);
+            Assert.Contains<string>("Cane Sugar", ingredients);
+            Assert.Equal<int>(3, ingredients.Count);
         }
     }
 }
