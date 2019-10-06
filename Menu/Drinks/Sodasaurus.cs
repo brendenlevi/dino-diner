@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Sodasaurus Class
@@ -69,6 +70,19 @@ namespace DinoDiner.Menu.Drinks
         public Sodasaurus()
         {
             this.Size = Size.Small;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size, then flavor, then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.Size.ToString());
+            sb.Append(" " + this.Flavor.ToString());
+            sb.Append(" Sodasaurus");
+            return sb.ToString();
         }
     }
 }

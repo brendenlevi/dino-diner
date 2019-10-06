@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Tyrannotea Class
@@ -103,6 +104,22 @@ namespace DinoDiner.Menu.Drinks
         public void HoldLemon()
         {
             this.Lemon = false;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size, then sweet, then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.Size.ToString());
+            if (this.Sweet)
+            {
+                sb.Append(" Sweet");
+            }
+            sb.Append(" Tyrannotea");
+            return sb.ToString();
         }
     }
 }

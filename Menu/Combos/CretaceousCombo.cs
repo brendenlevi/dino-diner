@@ -5,18 +5,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DinoDiner.Menu.Entrees;
-using DinoDiner.Menu.Sides;
-using DinoDiner.Menu.Drinks;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo
+    public class CretaceousCombo : Combo
     {
-        public Entree Entree { get; set; }
 
         private Side side;
-        public Side Side
+        public override Side Side
         {
             get { return side; }
             set
@@ -27,7 +23,7 @@ namespace DinoDiner.Menu
         }
 
         private Drink drink;
-        public Drink Drink
+        public override Drink Drink
         {
             get { return drink; }
             set
@@ -37,7 +33,7 @@ namespace DinoDiner.Menu
             }
         }
 
-        public double Price
+        public override double Price
         {
             get
             {
@@ -45,7 +41,7 @@ namespace DinoDiner.Menu
             }
         }
 
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -54,7 +50,7 @@ namespace DinoDiner.Menu
         }
 
         private Size size = Size.Small;
-        public Size Size
+        public override Size Size
         {
             get { return size; }
             set
@@ -65,7 +61,7 @@ namespace DinoDiner.Menu
             }
         }
 
-        public List<string> Ingredients
+        public override List<string> Ingredients
         {
             get
             {
@@ -82,6 +78,19 @@ namespace DinoDiner.Menu
             Entree = entree;
             Side = new Fryceritops();
             Drink = new Sodasaurus();
+        }
+
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Entree.ToString());
+            sb.Append(" Combo");
+            return sb.ToString();
         }
     }
 }

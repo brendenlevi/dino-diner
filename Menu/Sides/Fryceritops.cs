@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Fryceritops Class
@@ -60,6 +61,18 @@ namespace DinoDiner.Menu.Sides
         public Fryceritops()
         {
             this.Size = Size.Small;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.Size.ToString());
+            sb.Append(" Friceritops");
+            return sb.ToString();
         }
     }
 }

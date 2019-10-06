@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Water Class
@@ -61,6 +62,18 @@ namespace DinoDiner.Menu.Drinks
         public void AddLemon()
         {
             this.Lemon = true;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.Size.ToString());
+            sb.Append(" Water");
+            return sb.ToString();
         }
     }
 }

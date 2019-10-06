@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// PrerodactylWings Class
@@ -31,6 +32,17 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 7.21;
             this.Calories = 318;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns>name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Pterodactyl Wings");
+            return sb.ToString();
         }
     }
 }

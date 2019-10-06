@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// DinoNuggets Class
@@ -51,6 +52,18 @@ namespace DinoDiner.Menu.Entrees
             this.Price += .25;
             this.Calories += 59;
             this.totalNuggets += 1;
+        }
+
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns>name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Dino-Nuggets");
+            return sb.ToString();
         }
     }
 }

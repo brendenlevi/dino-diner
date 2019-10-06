@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// VelociWrap Class
@@ -64,6 +65,18 @@ namespace DinoDiner.Menu.Entrees
         public void HoldCheese()
         {
             this.cheese = false;
+        }
+
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns>name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Veloci-Wrap");
+            return sb.ToString();
         }
     }
 }

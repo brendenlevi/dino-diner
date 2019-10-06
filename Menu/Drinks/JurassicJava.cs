@@ -1,15 +1,16 @@
-﻿/* JurrasicJava .cs
+﻿/* JurassicJava .cs
  * Author: Brenden Levi
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// JurrasicJava Class
     /// </summary>
-    public class JurrasicJava : Drink
+    public class JurassicJava : Drink
     {
         /// <summary>
         /// Gets and Sets the RoomForCream bool
@@ -68,7 +69,7 @@ namespace DinoDiner.Menu.Drinks
         /// Class constructor setting size to small and ice false 
         /// and then Price and Calories are updated
         /// </summary>
-        public JurrasicJava()
+        public JurassicJava()
         {
             this.Ice = false;
             this.Size = Size.Small;
@@ -96,6 +97,22 @@ namespace DinoDiner.Menu.Drinks
         public void MakeDecaf()
         {
             this.Decaf = true;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns> string with size, then decaf, then name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.Size.ToString());
+            if (this.Decaf)
+            {
+                sb.Append(" Decaf");
+            }
+            sb.Append(" Jurassic Java");
+            return sb.ToString();
         }
     }
 }

@@ -3,8 +3,9 @@
  */
 
 using System.Collections.Generic;
+using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Brontowurst Class
@@ -64,6 +65,17 @@ namespace DinoDiner.Menu.Entrees
         public void HoldOnion()
         {
             this.onion = false;
+        }
+
+        /// <summary>
+        // Overrides the ToString Method
+        // <returns>name.</returns>
+        /// </summary>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Brontowurst");
+            return sb.ToString();
         }
     }
 }
