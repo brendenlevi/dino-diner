@@ -12,12 +12,11 @@ namespace DinoDiner.Menu
     public class Menu
     {
         // All Available Menu Items
-        private List<IMenuItem> availableMenuItems;
         public List<IMenuItem> AvailableMenuItems
         {
             get
             {
-                availableMenuItems = new List<IMenuItem>();
+                List<IMenuItem> availableMenuItems = new List<IMenuItem>();
 
                 // All Drinks
                 JurassicJava java = new JurassicJava();
@@ -60,12 +59,12 @@ namespace DinoDiner.Menu
         }
 
         // All Available Entree Items
-        private List<Entree> availableEntrees = new List<Entree>();
         public List<Entree> AvailableEntrees
         {
             get
             {
-                foreach (IMenuItem item in availableMenuItems){
+                List<Entree> availableEntrees = new List<Entree>();
+                foreach (IMenuItem item in this.AvailableMenuItems){
                     if (item is Entree)
                     {
                         availableEntrees.Add((Entree)item);
@@ -76,12 +75,12 @@ namespace DinoDiner.Menu
         }
 
         // All Available Side Items
-        private List<Side> availableSides = new List<Side>();
         public List<Side> AvailableSides
         {
             get
             {
-                foreach (IMenuItem item in availableMenuItems)
+                List<Side> availableSides = new List<Side>();
+                foreach (IMenuItem item in this.AvailableMenuItems)
                 {
                     if (item is Side)
                     {
@@ -93,12 +92,12 @@ namespace DinoDiner.Menu
         }
 
         // All Available Drink Items
-        private List<Drink> availableDrinks = new List<Drink>();
         public List<Drink> AvailableDrinks
         {
             get
             {
-                foreach (IMenuItem item in availableMenuItems)
+                List<Drink> availableDrinks = new List<Drink>();
+                foreach (IMenuItem item in this.AvailableMenuItems)
                 {
                     if (item is Drink)
                     {
@@ -110,12 +109,12 @@ namespace DinoDiner.Menu
         }
 
         // All Available Combo Items
-        private List<Combo> availableCombos = new List<Combo>();
         public List<Combo> AvailableCombos
         {
             get
             {
-                foreach (IMenuItem item in availableMenuItems)
+                List<Combo> availableCombos = new List<Combo>();
+                foreach (IMenuItem item in this.AvailableMenuItems)
                 {
                     if (item is Entree)
                     {
@@ -135,7 +134,7 @@ namespace DinoDiner.Menu
             StringBuilder sb = new StringBuilder();
             foreach(IMenuItem item in this.AvailableMenuItems)
             {
-                sb.AppendLine(item.ToString());
+                sb.Append(item.ToString() + "\n");
             }
             return sb.ToString();
         }
