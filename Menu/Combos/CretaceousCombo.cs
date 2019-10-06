@@ -11,6 +11,7 @@ namespace DinoDiner.Menu
     public class CretaceousCombo : Combo
     {
 
+        // Side for Combo
         private Side side;
         public override Side Side
         {
@@ -22,6 +23,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // Drink for Combo
         private Drink drink;
         public override Drink Drink
         {
@@ -33,6 +35,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // Price which is all items added together minus 25 cetns.
         public override double Price
         {
             get
@@ -41,6 +44,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // Calories are all Item calories added together
         public override uint Calories
         {
             get
@@ -49,6 +53,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // Updates the size of all items when combo size is changed
         private Size size = Size.Small;
         public override Size Size
         {
@@ -61,6 +66,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // All Ingredients added together
         public override List<string> Ingredients
         {
             get
@@ -73,6 +79,7 @@ namespace DinoDiner.Menu
             }
         }
 
+        // Creates a combo whenever an entree is passed into it
         public CretaceousCombo(Entree entree)
         {
             Entree = entree;
