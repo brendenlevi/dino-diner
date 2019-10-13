@@ -9,6 +9,81 @@
       Title="DrinkSelection">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Drink</TextBlock>
+            <Button Grid.Row="1" Click="SodasaurusClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="75" Source="dino-diner-images/DinoDiner-14.png" Margin="5"/>
+                    <TextBlock FontSize="20" VerticalAlignment="Center">Sodasaurus</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row="2" Click="TyrannoteaClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="75" Source="dino-diner-images/DinoDiner-12.png" Margin="5"/>
+                    <TextBlock FontSize="20" VerticalAlignment="Center">Tyrannotea</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row="3" Click="JavaClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="75" Source="dino-diner-images/DinoDiner-13.png" Margin="5"/>
+                    <TextBlock FontSize="20" VerticalAlignment="Center">Jurrasic Java</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Grid.Row="4" Click="WaterClick">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="75" Source="dino-diner-images/DinoDiner-15.png" Margin="5"/>
+                    <TextBlock FontSize="20" VerticalAlignment="Center">Water</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Size</TextBlock>
+            <Button Grid.Row="1">
+                <TextBlock FontSize="24">Small</TextBlock>
+            </Button>
+            <Button Grid.Row="2">
+                <TextBlock FontSize="24">Medium</TextBlock>
+            </Button>
+            <Button Grid.Row="3">
+                <TextBlock FontSize="24">Large</TextBlock>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Special</TextBlock>
+            <StackPanel Name="ButtonStack" Grid.Row="1">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="MinHeight" Value="160"/>
+                        <Setter Property="FontSize" Value="24"/>
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

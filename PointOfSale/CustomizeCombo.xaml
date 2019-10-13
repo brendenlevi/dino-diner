@@ -9,6 +9,72 @@
       Title="CustomizeCombo">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Customize Combo</TextBlock>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24">Side</TextBlock>
+                    <Button Click="SideSelection" Margin="5" Grid.Row="1">
+                    <TextBlock FontSize="24">Side Selection</TextBlock>
+                    </Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24">Drink</TextBlock>
+                <Button Click="DrinkSelection" Margin="5" Grid.Row="1">
+                    <TextBlock FontSize="24">Drink Selection</TextBlock>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock HorizontalAlignment="Center" FontSize="24" Grid.Row="0">Size</TextBlock>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="0" Margin="5">
+                    <TextBlock FontSize="24">Small</TextBlock>
+                </Button>
+
+                <Button Grid.Column="1" Margin="5">
+                    <TextBlock FontSize="24">Medium</TextBlock>
+                </Button>
+
+                <Button Grid.Column="2" Margin="5">
+                    <TextBlock FontSize="24">Large</TextBlock>
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

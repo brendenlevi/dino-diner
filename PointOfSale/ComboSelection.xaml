@@ -8,25 +8,60 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ComboSelection">
 
-    <WrapPanel>
-        <WrapPanel.Resources>
-            <Style TargetType="Button">
-                <Setter Property="MinWidth" Value="160"/>
-                <Setter Property="MinHeight" Value="160"/>
-            </Style>
-        </WrapPanel.Resources>
 
-        <Button>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Button Click="CustomizeCombo" Grid.Column="0" Grid.Row="0">
             <StackPanel>
                 <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-01.png" />
-                <TextBlock>Brontowurst Combo</TextBlock>
+                <TextBlock FontSize="20">Brontowurst Combo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Content="Dino-Nuggets Combo"/>
-        <Button Content="Prehistoric PB&amp;J Combo"/>
-        <Button Content="Pterodactyl Wings Combo"/>
-        <Button Content="Steakosaurus Combo"/>
-        <Button Content="T-Rex King Burger Combo"/>
-        <Button Content="Veloci-Wrap Combo"/>
-    </WrapPanel>
+        <Button Click="CustomizeCombo" Grid.Column="1" Grid.Row="0">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-02.png" />
+                <TextBlock FontSize="20">Dino-Nuggets Combo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Click="CustomizeCombo" Grid.Column="2" Grid.Row="0">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-03.png" />
+                <TextBlock FontSize="20">Prehistoric PB&amp;J Combo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Click="CustomizeCombo" Grid.Column="0" Grid.Row="1">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-04.png" />
+                <TextBlock FontSize="20">Pterodactyl Wings Combo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Click="CustomizeCombo" Grid.Column="1" Grid.Row="1">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-05.png" />
+                <TextBlock FontSize="20">Steakosaurus Burger Combo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Click="CustomizeCombo" Grid.Column="2" Grid.Row="1">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-06.png" />
+                <TextBlock FontSize="20">T-Rex Kingburger Combo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Click="CustomizeCombo" Grid.Column="0" Grid.Row="2">
+            <StackPanel>
+                <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-07.png" />
+                <TextBlock FontSize="20">Veloci-Wrap Combo</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
 </Page>

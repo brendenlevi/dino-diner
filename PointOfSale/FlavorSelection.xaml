@@ -1,4 +1,4 @@
-﻿<Page x:Class="PointOfSale.MenuCategorySelection"
+﻿<Page x:Class="PointOfSale.FlavorSelection"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,20 +6,26 @@
       xmlns:local="clr-namespace:PointOfSale"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuCategorySelection">
+      Title="FlavorSelection">
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Click="SelectCombo" Grid.Column="0" Grid.Row="0" FontSize="24">Combos</Button>
-        <Button Click="SelectEntree" Grid.Column="1" Grid.Row="0" FontSize="24">Entrees</Button>
-        <Button Click="SelectSide" Grid.Column="0" Grid.Row="1" FontSize="24">Sides</Button>
-        <Button Click="SelectDrink" Grid.Column="1" Grid.Row="1" FontSize="24">Drinks</Button>
+
+        <Button Grid.Column="0" Grid.Row="0" FontSize="24">Cherry</Button>
+        <Button Grid.Column="1" Grid.Row="0" FontSize="24">Chocolate</Button>
+        <Button Grid.Column="2" Grid.Row="0" FontSize="24">Cola</Button>
+        <Button Grid.Column="0" Grid.Row="1" FontSize="24">Lime</Button>
+        <Button Grid.Column="1" Grid.Row="1" FontSize="24">Orange</Button>
+        <Button Grid.Column="2" Grid.Row="1" FontSize="24">Root Beer</Button>
+        <Button Grid.Column="0" Grid.Row="2" FontSize="24">Vanilla</Button>
     </Grid>
 </Page>
