@@ -71,7 +71,7 @@ namespace DinoDiner.Menu
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this.Size.ToString());
-            sb.Append(" Friceritops");
+            sb.Append(" Fryceritops");
             return sb.ToString();
         }
     }

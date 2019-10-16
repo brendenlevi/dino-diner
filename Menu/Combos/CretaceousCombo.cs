@@ -5,15 +5,51 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo : Combo
+    public class CretaceousCombo : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Private size backing variable
+        /// </summary>
+        private Size size = Size.Small;
+
+        /// <summary>
+        /// An event handler for PropertyChanged events
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies user of a change in a property value
+        /// </summary>
+        /// <param name="propertyName">Name of property changed</param>
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Gets and sets the Entree
+        /// </summary>
+        private Entree entree;
+        public Entree Entree
+        {
+            get { return entree; }
+            protected set
+            {
+                entree = value;
+                entree.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
+                {
+                    NotifyOfPropertyChanged(args.PropertyName);
+                };
+            }
+        }
 
         // Side for Combo
         private Side side;
-        public override Side Side
+        public Side Side
         {
             get { return side; }
             set
@@ -25,18 +61,22 @@ namespace DinoDiner.Menu
 
         // Drink for Combo
         private Drink drink;
-        public override Drink Drink
+        public Drink Drink
         {
             get { return drink; }
             set
             {
                 drink = value;
                 drink.Size = size;
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
             }
         }
 
         // Price which is all items added together minus 25 cetns.
-        public override double Price
+        public double Price
         {
             get
             {
@@ -44,8 +84,8 @@ namespace DinoDiner.Menu
             }
         }
 
-        // Calories are all Item calories added together
-        public override uint Calories
+        // Calories are all item calories added together
+        public uint Calories
         {
             get
             {
@@ -54,8 +94,7 @@ namespace DinoDiner.Menu
         }
 
         // Updates the size of all items when combo size is changed
-        private Size size = Size.Small;
-        public override Size Size
+        public Size Size
         {
             get { return size; }
             set
@@ -63,11 +102,15 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = value;
                 Side.Size = value;
+                NotifyOfPropertyChanged("Size");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
             }
         }
 
         // All Ingredients added together
-        public override List<string> Ingredients
+        public List<string> Ingredients
         {
             get
             {
@@ -92,12 +135,34 @@ namespace DinoDiner.Menu
         // Overrides the ToString Method
         // <returns> string with size then name.</returns>
         /// </summary>
-        public override string ToString()
+        public string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(Entree.ToString());
             sb.Append(" Combo");
             return sb.ToString();
+        }
+
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        public string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.AddRange(Entree.Special);
+                special.Add(Side.Description);
+                special.AddRange(Side.Special);
+                special.Add(Drink.Description);
+                special.AddRange(Drink.Special);
+                return special.ToArray();
+            }
         }
     }
 }
