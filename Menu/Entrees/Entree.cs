@@ -15,13 +15,17 @@ namespace DinoDiner.Menu
         /// <summary>
         /// An event handler for PropertyChanged events
         /// </summary>
-        public abstract event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Notifies user of a change in a property value
         /// </summary>
         /// <param name="propertyName">Name of property changed</param>
-        protected abstract void NotifyOfPropertyChanged(string propertyName);
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         /// <summary>
         /// Gets and sets the price
@@ -34,9 +38,20 @@ namespace DinoDiner.Menu
         public uint Calories { get; set; }
 
         /// <summary>
+        /// private ingredients variable
+        /// </summary>
+        protected List<string> ingredients = new List<string>();
+
+        /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public virtual List<string> Ingredients { get; }
+        public virtual List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>(ingredients.ToArray());
+            }
+        }
 
         /// <summary>
         /// Gets the string containing the description.

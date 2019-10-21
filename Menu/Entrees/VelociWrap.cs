@@ -21,20 +21,6 @@ namespace DinoDiner.Menu
         private bool cheese = true;
 
         /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected override void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
         /// Ingredients which uses bools to add said ingredients
         /// </summary>
         public override List<string> Ingredients
@@ -43,7 +29,7 @@ namespace DinoDiner.Menu
             {
                 List<string> ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast" };
                 if (lettuce) ingredients.Add("Romaine Lettuce");
-                if (dressing) ingredients.Add("Ceasar Dressing");
+                if (dressing) ingredients.Add("Caesar Dressing");
                 if (cheese) ingredients.Add("Parmesan Cheese");
                 return ingredients;
             }
@@ -56,6 +42,11 @@ namespace DinoDiner.Menu
         {
             this.Price = 6.86;
             this.Calories = 356;
+            ingredients.Add("Flour Tortilla");
+            ingredients.Add("Chicken Breast");
+            ingredients.Add("Romaine Lettuce");
+            ingredients.Add("Caesar Dressing");
+            ingredients.Add("Parmesan Cheese");
         }
 
         /// <summary>
@@ -64,6 +55,9 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.dressing = false;
+            ingredients.Remove("Caesar Dressing");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -72,6 +66,9 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
+            ingredients.Remove("Romaine Lettuce");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -80,6 +77,9 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             this.cheese = false;
+            ingredients.Remove("Parmesan Cheese");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
 
@@ -110,8 +110,8 @@ namespace DinoDiner.Menu
             get
             {
                 List<string> special = new List<string>();
-                if (!lettuce) special.Add("Hold Lettuce");
-                if (!dressing) special.Add("Hold Dressing");
+                if (!lettuce) special.Add("Hold Romaine Lettuce");
+                if (!dressing) special.Add("Hold Caesar Dressing");
                 if (!cheese) special.Add("Hold Parmesan Cheese");
                 return special.ToArray();
             }

@@ -36,22 +36,12 @@ namespace DinoDiner.Menu
                         Calories = 520;
                         break;
                 }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
                 return size;
-            }
-        }
-
-        /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Macaroni Noodles", "Cheese Product", "Pork Sausage" };
-                return ingredients;
             }
         }
 
@@ -61,6 +51,9 @@ namespace DinoDiner.Menu
         public MeteorMacAndCheese()
         {
             this.Size = Size.Small;
+            ingredients.Add("Macaroni Noodles");
+            ingredients.Add("Cheese Product");
+            ingredients.Add("Pork Sausage");
         }
 
         /// <summary>

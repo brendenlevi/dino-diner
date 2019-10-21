@@ -120,6 +120,7 @@ namespace MenuTest.Entrees
             TRexKingBurger trex = new TRexKingBurger();
             Assert.Empty(trex.Special);
         }
+
         [Fact]
         public void HoldBunShouldAddToSpecial()
         {
@@ -270,6 +271,86 @@ namespace MenuTest.Entrees
                     Assert.Equal("Hold Mayo", item);
                 }
             );
+        }
+
+        [Fact]
+        public void HoldBunShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldBun();
+            });
+        }
+
+        [Fact]
+        public void HoldPickleShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldPickle();
+            });
+        }
+
+        [Fact]
+        public void HoldKetchupShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldKetchup();
+            });
+        }
+
+        [Fact]
+        public void HoldMustardShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldMustard();
+            });
+        }
+
+        [Fact]
+        public void HoldMayoShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldMayo();
+            });
+        }
+
+        [Fact]
+        public void HoldLettuceShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldLettuce();
+            });
+        }
+
+        [Fact]
+        public void HoldTomatoShouldNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldTomato();
+            });
+        }
+
+        [Fact]
+        public void HoldOnionShoulNotifySpecialChange()
+        {
+            TRexKingBurger trex = new TRexKingBurger();
+            Assert.PropertyChanged(trex, "Special", () =>
+            {
+                trex.HoldOnion();
+            });
         }
     }
 

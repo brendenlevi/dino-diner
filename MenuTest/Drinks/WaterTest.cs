@@ -122,7 +122,7 @@ namespace MenuTest.Drinks
             Water water = new Water();
             List<string> ingredients = water.Ingredients;
             Assert.Contains<string>("Water", ingredients);
-            Assert.Equal<int>(1, ingredients.Count);
+            Assert.Single(ingredients);
         }
 
         [Fact]
@@ -181,6 +181,36 @@ namespace MenuTest.Drinks
                     Assert.Equal("Add Lemon", item);
                 }
             );
+        }
+
+        [Fact]
+        public void HoldIceShouldNotifySpecialChange()
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Special", () =>
+            {
+                water.HoldIce();
+            });
+        }
+
+        [Fact]
+        public void AddLemonShouldNotifySpecialChange()
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Special", () =>
+            {
+                water.AddLemon();
+            });
+        }
+
+        [Fact]
+        public void ChangingSizeShouldNotifyDescriptionChange()
+        {
+            Water water = new Water();
+            Assert.PropertyChanged(water, "Description", () =>
+            {
+                water.Size = Size.Medium;
+            });
         }
     }
 }

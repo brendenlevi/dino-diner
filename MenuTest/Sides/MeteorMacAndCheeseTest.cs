@@ -97,5 +97,25 @@ namespace MenuTest.Sides
             MeteorMacAndCheese mmc = new MeteorMacAndCheese();
             Assert.Empty(mmc.Special);
         }
+
+        [Fact]
+        public void ChangingSizeShouldNotifyDescriptionChange()
+        {
+            MeteorMacAndCheese mmc = new MeteorMacAndCheese();
+            Assert.PropertyChanged(mmc, "Description", () =>
+            {
+                mmc.Size = Size.Medium;
+            });
+        }
+
+        [Fact]
+        public void ChangingSizeShouldNotifyPriceChange()
+        {
+            MeteorMacAndCheese mmc = new MeteorMacAndCheese();
+            Assert.PropertyChanged(mmc, "Price", () =>
+            {
+                mmc.Size = Size.Medium;
+            });
+        }
     }
 }

@@ -77,6 +77,7 @@ namespace MenuTest.Entrees
         SteakosaurusBurger sb = new SteakosaurusBurger();
         Assert.Empty(sb.Special);
         }
+
         [Fact]
         public void HoldBunShouldAddToSpecial()
         {
@@ -156,5 +157,46 @@ namespace MenuTest.Entrees
                 }
             );
         }
+
+        [Fact]
+        public void HoldBunShouldNotifySpecialChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldBun();
+            });
+        }
+
+        [Fact]
+        public void HoldPickleShouldNotifySpecialChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldPickle();
+            });
+        }
+
+        [Fact]
+        public void HoldKetchupShouldNotifySpecialChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldKetchup();
+            });
+        }
+
+        [Fact]
+        public void HoldMustardShouldNotifySpecialChange()
+        {
+            SteakosaurusBurger sb = new SteakosaurusBurger();
+            Assert.PropertyChanged(sb, "Special", () =>
+            {
+                sb.HoldMustard();
+            });
+        }
+
     }
 }

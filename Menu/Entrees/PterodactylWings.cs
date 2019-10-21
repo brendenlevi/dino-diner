@@ -11,34 +11,8 @@ namespace DinoDiner.Menu
     /// <summary>
     /// PrerodactylWings Class
     /// </summary>
-    public class PterodactylWings : Entree, INotifyPropertyChanged
+    public class PterodactylWings : Entree
     {
-        /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected override void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
-        /// Ingredients which uses bools to add said ingredients
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Chicken", "Wing Sauce" };
-                return ingredients;
-            }
-        }
-
         /// <summary>
         /// Class constructor setting price and calories
         /// </summary>
@@ -46,6 +20,8 @@ namespace DinoDiner.Menu
         {
             this.Price = 7.21;
             this.Calories = 318;
+            ingredients.Add("Chicken");
+            ingredients.Add("Wing Sauce");
         }
 
         /// <summary>

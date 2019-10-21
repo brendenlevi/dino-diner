@@ -5,14 +5,13 @@
 
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// PrehistoricPBJ Class
     /// </summary>
-    public class PrehistoricPBJ : Entree, INotifyPropertyChanged
+    public class PrehistoricPBJ : Entree
     { 
         /// <summary>
         /// Private Backing bools used to hold ingredients
@@ -21,40 +20,15 @@ namespace DinoDiner.Menu
         private bool jelly = true;
 
         /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected override void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
-        /// Ingredients which uses bools to add said ingredients
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Bread" };
-                if (peanutButter) ingredients.Add("Peanut Butter");
-                if (jelly) ingredients.Add("Jelly");
-                return ingredients;
-            }
-        }
-
-        /// <summary>
         /// Class constructor setting price and calories
         /// </summary>
         public PrehistoricPBJ()
         {
             this.Price = 6.52;
             this.Calories = 483;
+            ingredients.Add("Bread");
+            ingredients.Add("Peanut Butter");
+            ingredients.Add("Jelly");
         }
 
         /// <summary>
@@ -63,6 +37,7 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             this.peanutButter = false;
+            ingredients.Remove("Peanut Butter");
             NotifyOfPropertyChanged("Ingredients");
             NotifyOfPropertyChanged("Special");
         }
@@ -73,6 +48,7 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             this.jelly = false;
+            ingredients.Remove("Jelly");
             NotifyOfPropertyChanged("Ingredients");
             NotifyOfPropertyChanged("Special");
         }

@@ -26,6 +26,7 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
@@ -54,6 +55,7 @@ namespace DinoDiner.Menu
             this.Size = Size.Small;
             this.Price = .10;
             this.Calories = 0;
+            ingredients.Add("Water");
         }
 
         /// <summary>
@@ -61,7 +63,19 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            this.Lemon = true;
+            Lemon = true;
+            ingredients.Add("Lemon");
+            NotifyOfPropertyChanged("Special");
+        }
+
+        /// <summary>
+        /// Sets Lemon bool to false so it will be removed from ingredients
+        /// </summary>
+        public void HoldLemon()
+        {
+            Lemon = false;
+            ingredients.Remove("Lemon");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>

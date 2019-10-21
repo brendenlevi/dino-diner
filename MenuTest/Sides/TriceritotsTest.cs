@@ -98,5 +98,24 @@ namespace MenuTest.Sides
             Assert.Empty(tt.Special);
         }
 
+        [Fact]
+        public void ChangingSizeShouldNotifyDescriptionChange()
+        {
+            Triceritots tt = new Triceritots();
+            Assert.PropertyChanged(tt, "Description", () =>
+            {
+                tt.Size = Size.Medium;
+            });
+        }
+
+        [Fact]
+        public void ChangingSizeShouldNotifyPriceChange()
+        {
+            Triceritots tt = new Triceritots();
+            Assert.PropertyChanged(tt, "Price", () =>
+            {
+                tt.Size = Size.Medium;
+            });
+        }
     }
 }

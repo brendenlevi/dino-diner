@@ -41,9 +41,20 @@ namespace DinoDiner.Menu
         public bool Ice { get; set; } = true;
 
         /// <summary>
+        /// private ingredients variable
+        /// </summary>
+        protected List<string> ingredients = new List<string>();
+
+        /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public virtual List<string> Ingredients { get; }
+        public virtual List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>(ingredients.ToArray());
+            }
+        }
 
         /// <summary>
         /// Gets or sets the size
@@ -65,7 +76,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldIce()
         {
-            this.Ice = false;
+            Ice = false;
+            NotifyOfPropertyChanged("Special");
         }
     }
 }

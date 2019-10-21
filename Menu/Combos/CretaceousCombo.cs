@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo : INotifyPropertyChanged
+    public class CretaceousCombo : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Private size backing variable
@@ -56,6 +56,10 @@ namespace DinoDiner.Menu
             {
                 side = value;
                 side.Size = size;
+                side.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
+                {
+                    NotifyOfPropertyChanged(args.PropertyName);
+                };
             }
         }
 
@@ -135,7 +139,7 @@ namespace DinoDiner.Menu
         // Overrides the ToString Method
         // <returns> string with size then name.</returns>
         /// </summary>
-        public string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(Entree.ToString());

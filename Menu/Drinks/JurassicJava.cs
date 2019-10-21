@@ -11,22 +11,8 @@ namespace DinoDiner.Menu
     /// <summary>
     /// JurrasicJava Class
     /// </summary>
-    public class JurassicJava : Drink, INotifyPropertyChanged
-    {
-        /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+    public class JurassicJava : Drink
+    { 
         /// <summary>
         /// Gets and Sets the RoomForCream bool
         /// </summary>
@@ -61,22 +47,12 @@ namespace DinoDiner.Menu
                         Calories = 8;
                         break;
                 }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
                 return size;
-            }
-        }
-
-        /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Water", "Coffee" };
-                return ingredients;
             }
         }
 
@@ -86,8 +62,10 @@ namespace DinoDiner.Menu
         /// </summary>
         public JurassicJava()
         {
-            this.Ice = false;
-            this.Size = Size.Small;
+            Ice = false;
+            Size = Size.Small;
+            ingredients.Add("Water");
+            ingredients.Add("Coffee");
         }
 
         /// <summary>
@@ -95,7 +73,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddIce()
         {
-            this.Ice = true;
+            Ice = true;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -103,7 +82,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public void LeaveSpaceForCream()
         {
-            this.SpaceForCream = true;
+            SpaceForCream = true;
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -111,7 +91,8 @@ namespace DinoDiner.Menu
         /// </summary>
         public void MakeDecaf()
         {
-            this.Decaf = true;
+            Decaf = true;
+            NotifyOfPropertyChanged("Description");
         }
 
         /// <summary>

@@ -36,22 +36,12 @@ namespace DinoDiner.Menu
                         Calories = 480;
                         break;
                 }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
                 return size;
-            }
-        }
-
-        /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>(){"Potato", "Salt", "Vegetable Oil"};
-                return ingredients;
             }
         }
 
@@ -61,6 +51,9 @@ namespace DinoDiner.Menu
         public Fryceritops()
         {
             this.Size = Size.Small;
+            ingredients.Add("Potato");
+            ingredients.Add("Salt");
+            ingredients.Add("Vegetable Oil");
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Brontowurst Class
     /// </summary>
-    public class Brontowurst : Entree, INotifyPropertyChanged
+    public class Brontowurst : Entree
     {
         /// <summary>
         /// Bools used to hold ingredients
@@ -21,41 +21,16 @@ namespace DinoDiner.Menu
         private bool onion = true;
 
         /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected override void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
-        /// Ingredients which uses bools to add said ingredients
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Brautwurst" };
-                if (bun) ingredients.Add("Whole Wheat Bun");
-                if (peppers) ingredients.Add("Peppers");
-                if (onion) ingredients.Add("Onion");
-                return ingredients;
-            }
-        }
-
-        /// <summary>
         /// Class constructor setting price and calories
         /// </summary>
         public Brontowurst()
         {
             this.Price = 5.36;
             this.Calories = 498;
+            ingredients.Add("Brautwurst");
+            ingredients.Add("Whole Wheat Bun");
+            ingredients.Add("Peppers");
+            ingredients.Add("Onion");
         }
 
         /// <summary>
@@ -64,6 +39,9 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
+            ingredients.Remove("Whole Wheat Bun");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -72,6 +50,9 @@ namespace DinoDiner.Menu
         public void HoldPeppers()
         {
             this.peppers = false;
+            ingredients.Remove("Peppers");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -80,6 +61,9 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             this.onion = false;
+            ingredients.Remove("Onion");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>

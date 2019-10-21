@@ -36,22 +36,12 @@ namespace DinoDiner.Menu
                         Calories = 720;
                         break;
                 }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
                 return size;
-            }
-        }
-
-        /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Cheese Product", "Breading", "Vegetable Oil" };
-                return ingredients;
             }
         }
         
@@ -61,6 +51,9 @@ namespace DinoDiner.Menu
         public MezzorellaSticks()
         {
             this.Size = Size.Small;
+            ingredients.Add("Cheese Product");
+            ingredients.Add("Breading");
+            ingredients.Add("Vegetable Oil");
         }
 
 

@@ -11,29 +11,19 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Sodasaurus Class
     /// </summary>
-    public class Sodasaurus : Drink, INotifyPropertyChanged
+    public class Sodasaurus : Drink
     {
-        /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         /// <summary>
         /// Gets and Sets the Flavor
         /// </summary>
         private SodasaurusFlavor flavor;
         public SodasaurusFlavor Flavor {
             get { return flavor; }
-            set { flavor = value; }
+            set 
+            { 
+                flavor = value;
+                NotifyOfPropertyChanged("Description");
+            }
         }
 
         /// <summary>
@@ -60,6 +50,8 @@ namespace DinoDiner.Menu
                         Calories = 208;
                         break;
                 }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
@@ -68,23 +60,14 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
-                return ingredients;
-            }
-        }
-
-        /// <summary>
         /// Class constructor setting size to small and then Price and Calories are updated
         /// </summary>
         public Sodasaurus()
         {
-            this.Size = Size.Small;
+            Size = Size.Small;
+            ingredients.Add("Water");
+            ingredients.Add("Natural Flavors");
+            ingredients.Add("Cane Sugar");
         }
 
         /// <summary>

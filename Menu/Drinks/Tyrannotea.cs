@@ -29,7 +29,17 @@ namespace DinoDiner.Menu
             set
             {
                 sweet = value;
-                this.Size = this.Size; // Updates calories after value change
+                if (Sweet)
+                {
+                    Calories *= 2;
+                    ingredients.Add("Cane Sugar");
+                }
+                else
+                {
+                    Calories /= 2;
+                    ingredients.Remove("Cane Sugar");
+                }
+                NotifyOfPropertyChanged("Description");
             }
         }
 
@@ -57,10 +67,8 @@ namespace DinoDiner.Menu
                         Calories = 32;
                         break;
                 }
-                if (Sweet)
-                {
-                    Calories *= 2;
-                }
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Description");
             }
             get
             {
@@ -69,25 +77,13 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// Overrides the Ingredients value
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Water", "Tea" };
-                if (Lemon) ingredients.Add("Lemon");
-                if (Sweet) ingredients.Add("Cane Sugar");
-                return ingredients;
-            }
-        }
-
-        /// <summary>
         /// Class constructor setting size and then Price and Calories are updated
         /// </summary>
         public Tyrannotea()
         {
-            this.Size = Size.Small;
+            Size = Size.Small;
+            ingredients.Add("Water");
+            ingredients.Add("Tea");
         }
 
         /// <summary>
@@ -95,7 +91,9 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddLemon()
         {
-            this.Lemon = true;
+            Lemon = true;
+            ingredients.Add("Lemon");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>
@@ -103,7 +101,9 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldLemon()
         {
-            this.Lemon = false;
+            Lemon = false;
+            ingredients.Remove("Lemon");
+            NotifyOfPropertyChanged("Special");
         }
 
         /// <summary>

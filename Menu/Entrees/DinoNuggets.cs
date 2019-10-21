@@ -4,14 +4,13 @@
 
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// DinoNuggets Class
     /// </summary>
-    public class DinoNuggets : Entree, INotifyPropertyChanged
+    public class DinoNuggets : Entree
     {
         /// <summary>
         /// Int to contain the total number of nuggets
@@ -19,43 +18,18 @@ namespace DinoDiner.Menu
         private uint totalNuggets { get; set; }
 
         /// <summary>
-        /// An event handler for PropertyChanged events
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Notifies user of a change in a property value
-        /// </summary>
-        /// <param name="propertyName">Name of property changed</param>
-        protected override void NotifyOfPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
-        /// Ingredients which uses bools to add said ingredients
-        /// </summary>
-        public override List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>();
-                for (int i = 0; i < totalNuggets; i++)
-                {
-                    ingredients.Add("Chicken Nugget");
-                }
-                return ingredients;
-            }
-        }
-
-        /// <summary>
         /// Class constructor setting price and calories and totalNuggets
         /// </summary>
         public DinoNuggets()
         {
-            this.Price = 4.25;
-            this.Calories = 59 * 6;
-            this.totalNuggets = 6;
+            Price = 4.25;
+            Calories = 59 * 6;
+            totalNuggets = 6;
+
+            for (int i = 0; i < totalNuggets; i++)
+            {
+                ingredients.Add("Chicken Nugget");
+            }
         }
 
         /// <summary>
@@ -63,9 +37,15 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddNugget()
         {
-            this.Price += .25;
-            this.Calories += 59;
-            this.totalNuggets += 1;
+            Price += .25;
+            Calories += 59;
+            totalNuggets++;
+
+            ingredients.Add("Chicken Nugget");
+            NotifyOfPropertyChanged("Price");
+            NotifyOfPropertyChanged("Calories");
+            NotifyOfPropertyChanged("Ingredients");
+            NotifyOfPropertyChanged("Special");
         }
 
 
