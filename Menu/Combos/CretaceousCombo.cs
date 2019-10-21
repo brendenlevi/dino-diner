@@ -143,6 +143,9 @@ namespace DinoDiner.Menu
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Gets a description of the order item
+        /// </summary>
         public string Description
         {
             get
@@ -151,6 +154,9 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Contains special instructions for food preparation 
+        /// </summary>
         public string[] Special
         {
             get

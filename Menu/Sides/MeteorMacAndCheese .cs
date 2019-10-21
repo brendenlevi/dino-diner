@@ -74,5 +74,25 @@ namespace DinoDiner.Menu
             sb.Append(" Meteor Mac and Cheese");
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Gets a description of the order item
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Contains special instructions for food preparation 
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                return special.ToArray();
+            }
+        }
     }
 }

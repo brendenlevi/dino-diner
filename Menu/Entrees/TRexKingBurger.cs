@@ -4,13 +4,14 @@
 
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// TRexKingBurger Class
     /// </summary>
-    public class TRexKingBurger : Entree
+    public class TRexKingBurger : Entree, INotifyPropertyChanged
     {
         /// <summary>
         /// Bools used to hold ingredients
@@ -23,6 +24,20 @@ namespace DinoDiner.Menu
         private bool ketchup = true;
         private bool mustard = true;
         private bool mayo = true;
+
+        /// <summary>
+        /// An event handler for PropertyChanged events
+        /// </summary>
+        public override event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies user of a change in a property value
+        /// </summary>
+        /// <param name="propertyName">Name of property changed</param>
+        protected override void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Ingredients which uses bools to add said ingredients
@@ -127,6 +142,34 @@ namespace DinoDiner.Menu
             StringBuilder sb = new StringBuilder();
             sb.Append("T-Rex King Burger");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a description of the order item
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Contains special instructions for food preparation 
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Whole Wheat Bun");
+                if (!pickle) special.Add("Hold Pickles");
+                if (!ketchup) special.Add("Hold Ketchup");
+                if (!mustard) special.Add("Hold Mustard");
+                if (!lettuce) special.Add("Hold Lettuce");
+                if (!tomato) special.Add("Hold Tomato");
+                if (!onion) special.Add("Hold Onion");
+                if (!mayo) special.Add("Hold Mayo");
+                return special.ToArray();
+            }
         }
     }
 }

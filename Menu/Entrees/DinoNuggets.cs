@@ -4,19 +4,33 @@
 
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// DinoNuggets Class
     /// </summary>
-    public class DinoNuggets : Entree
+    public class DinoNuggets : Entree, INotifyPropertyChanged
     {
-
         /// <summary>
         /// Int to contain the total number of nuggets
         /// </summary>
-        public uint totalNuggets { get; set; }
+        private uint totalNuggets { get; set; }
+
+        /// <summary>
+        /// An event handler for PropertyChanged events
+        /// </summary>
+        public override event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies user of a change in a property value
+        /// </summary>
+        /// <param name="propertyName">Name of property changed</param>
+        protected override void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Ingredients which uses bools to add said ingredients
@@ -64,6 +78,30 @@ namespace DinoDiner.Menu
             StringBuilder sb = new StringBuilder();
             sb.Append("Dino-Nuggets");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a description of the order item
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Contains special instructions for food preparation 
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (totalNuggets > 6)
+                {
+                    special.Add((totalNuggets - 6).ToString() + " Extra Nuggets");
+                }
+                return special.ToArray();
+            }
         }
     }
 }

@@ -4,14 +4,29 @@
 
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Sodasaurus Class
     /// </summary>
-    public class Sodasaurus : Drink
+    public class Sodasaurus : Drink, INotifyPropertyChanged
     {
+        /// <summary>
+        /// An event handler for PropertyChanged events
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies user of a change in a property value
+        /// </summary>
+        /// <param name="propertyName">Name of property changed</param>
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// Gets and Sets the Flavor
         /// </summary>
@@ -83,6 +98,27 @@ namespace DinoDiner.Menu
             sb.Append(" " + this.Flavor.ToString());
             sb.Append(" Sodasaurus");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a description of the order item
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Contains special instructions for food preparation 
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
         }
     }
 }

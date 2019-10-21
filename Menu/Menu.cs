@@ -109,11 +109,11 @@ namespace DinoDiner.Menu
         }
 
         // All Available Combo Items
-        public List<Combo> AvailableCombos
+        public List<CretaceousCombo> AvailableCombos
         {
             get
             {
-                List<Combo> availableCombos = new List<Combo>();
+                List<CretaceousCombo> availableCombos = new List<CretaceousCombo>();
                 foreach (IMenuItem item in this.AvailableMenuItems)
                 {
                     if (item is Entree)

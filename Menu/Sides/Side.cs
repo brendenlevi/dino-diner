@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DinoDiner.Menu
 {
-    public abstract class Side : IMenuItem
+    public abstract class Side : IMenuItem, IOrderItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -31,5 +31,14 @@ namespace DinoDiner.Menu
         /// </summary>
         public virtual Size Size { get; set; }
 
+        /// <summary>
+        /// Gets the string containing the description.
+        /// </summary>
+        public abstract string Description { get; }
+
+        /// <summary>
+        /// Gets the string containing specials.
+        /// </summary>
+        public abstract string[] Special { get; }
     }
 }

@@ -88,7 +88,7 @@ namespace MenuTest.Entrees
         }
 
         [Fact]
-        public void HoldPeanutButterAndJellyShouldAddToSpecial()
+        public void HoldAllShouldAddToSpecial()
         {
             PrehistoricPBJ pbj = new PrehistoricPBJ();
             pbj.HoldPeanutButter();

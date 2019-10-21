@@ -5,11 +5,26 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public abstract class Drink : IMenuItem
+    public abstract class Drink : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// An event handler for PropertyChanged events
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Notifies user of a change in a property value
+        /// </summary>
+        /// <param name="propertyName">Name of property changed</param>
+        protected void NotifyOfPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         /// <summary>
         /// Gets and sets the price
         /// </summary>
@@ -34,6 +49,16 @@ namespace DinoDiner.Menu
         /// Gets or sets the size
         /// </summary>
         public virtual Size Size { get; set; }
+
+        /// <summary>
+        /// Gets the string containing the description.
+        /// </summary>
+        public abstract string Description { get; }
+
+        /// <summary>
+        /// Gets the string containing specials.
+        /// </summary>
+        public abstract string[] Special { get; }
 
         /// <summary>
         /// Sets Ice bool to false so it will not be added to ingredients
