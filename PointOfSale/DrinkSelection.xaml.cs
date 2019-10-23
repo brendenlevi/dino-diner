@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
+using DDsize = DinoDiner.Menu.Size;
 
 namespace PointOfSale
 {
@@ -20,6 +22,8 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkSelection : Page
     {
+        private Drink drink;
+
         public DrinkSelection()
         {
             InitializeComponent();
@@ -31,7 +35,7 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void SodasaurusClick(object sender, RoutedEventArgs args)
+        void OnSelectSodasaurus(object sender, RoutedEventArgs args)
         {
             ButtonStack.Children.Clear();
             Button ice = new Button();
@@ -44,7 +48,13 @@ namespace PointOfSale
 
             ButtonStack.Children.Add(flavor);
             ButtonStack.Children.Add(ice);
-            
+
+            if (DataContext is Order order)
+            {
+                drink = new Sodasaurus();
+                order.Items.Add(drink);
+            }
+
         }
 
         /// <summary>
@@ -53,7 +63,7 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void TyrannoteaClick(object sender, RoutedEventArgs args)
+        void OnSelectTyrannotea(object sender, RoutedEventArgs args)
         {
             ButtonStack.Children.Clear();
             Button ice = new Button();
@@ -69,6 +79,12 @@ namespace PointOfSale
             ButtonStack.Children.Add(sweet);
             ButtonStack.Children.Add(lemon);
             ButtonStack.Children.Add(ice);
+
+            if (DataContext is Order order)
+            {
+                drink = new Tyrannotea();
+                order.Items.Add(drink);
+            }
         }
 
         /// <summary>
@@ -77,7 +93,7 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void JavaClick(object sender, RoutedEventArgs args)
+        void OnSelectJava(object sender, RoutedEventArgs args)
         {
             ButtonStack.Children.Clear();
             Button ice = new Button();
@@ -93,6 +109,12 @@ namespace PointOfSale
             ButtonStack.Children.Add(space);
             ButtonStack.Children.Add(decaf);
             ButtonStack.Children.Add(ice);
+
+            if (DataContext is Order order)
+            {
+                drink = new JurassicJava();
+                order.Items.Add(drink);
+            }
         }
 
         /// <summary>
@@ -101,7 +123,7 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void WaterClick(object sender, RoutedEventArgs args)
+        void OnSelectWater(object sender, RoutedEventArgs args)
         {
             ButtonStack.Children.Clear();
             Button ice = new Button();
@@ -112,6 +134,12 @@ namespace PointOfSale
 
             ButtonStack.Children.Add(lemon);
             ButtonStack.Children.Add(ice);
+
+            if (DataContext is Order order)
+            {
+                drink = new Water();
+                order.Items.Add(drink);
+            }
         }
 
         /// <summary>
@@ -123,6 +151,14 @@ namespace PointOfSale
         void FlavorClick(object sender, RoutedEventArgs args)
         {
             NavigationService.Navigate(new FlavorSelection());
+        }
+
+        private void OnChangeSize(object sender, RoutedEventArgs args)
+        {
+            if (sender is FrameworkElement element)
+            {
+                drink.Size = (DDsize)Enum.Parse(typeof(DDsize), element.Tag.ToString());
+            }
         }
     }
 }

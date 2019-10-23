@@ -25,25 +25,25 @@
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Drink</TextBlock>
-            <Button Grid.Row="1" Click="SodasaurusClick">
+            <Button Grid.Row="1" Click="OnSelectSodasaurus">
                 <StackPanel Orientation="Horizontal">
                     <Image Height="75" Source="dino-diner-images/DinoDiner-14.png" Margin="5"/>
                     <TextBlock FontSize="20" VerticalAlignment="Center">Sodasaurus</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="2" Click="TyrannoteaClick">
+            <Button Grid.Row="2" Click="OnSelectTyrannotea">
                 <StackPanel Orientation="Horizontal">
                     <Image Height="75" Source="dino-diner-images/DinoDiner-12.png" Margin="5"/>
                     <TextBlock FontSize="20" VerticalAlignment="Center">Tyrannotea</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="3" Click="JavaClick">
+            <Button Grid.Row="3" Click="OnSelectJava">
                 <StackPanel Orientation="Horizontal">
                     <Image Height="75" Source="dino-diner-images/DinoDiner-13.png" Margin="5"/>
                     <TextBlock FontSize="20" VerticalAlignment="Center">Jurrasic Java</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Row="4" Click="WaterClick">
+            <Button Grid.Row="4" Click="OnSelectWater">
                 <StackPanel Orientation="Horizontal">
                     <Image Height="75" Source="dino-diner-images/DinoDiner-15.png" Margin="5"/>
                     <TextBlock FontSize="20" VerticalAlignment="Center">Water</TextBlock>
@@ -59,13 +59,13 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Center">Size</TextBlock>
-            <Button Grid.Row="1">
+            <Button Grid.Row="1" Name="MakeSmall" Tag="Small" Click="OnChangeSize">
                 <TextBlock FontSize="24">Small</TextBlock>
             </Button>
-            <Button Grid.Row="2">
+            <Button Grid.Row="2" Name="MakeMedium" Tag="Medium" Click="OnChangeSize">
                 <TextBlock FontSize="24">Medium</TextBlock>
             </Button>
-            <Button Grid.Row="3">
+            <Button Grid.Row="3" Name="MakeLarge" Tag="Large" Click="OnChangeSize">
                 <TextBlock FontSize="24">Large</TextBlock>
             </Button>
         </Grid>
