@@ -21,9 +21,24 @@ namespace PointOfSale
     /// </summary>
     public partial class OrderList : UserControl
     {
+        public NavigationService NavigationService { get; set; }
         public OrderList()
         {
             InitializeComponent();
+        }
+
+        private void RemoveItem(object sender, RoutedEventArgs args)
+        {
+            if( DataContext is Order order)
+            {
+                if( sender is FrameworkElement element)
+                {
+                    if(element.DataContext is IOrderItem item)
+                    {
+                        order.Remove(item);
+                    }
+                }
+            }
         }
     }
 }

@@ -5,11 +5,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     // Interface for every order item, containing price, Description, and Special
-    public interface IOrderItem
+    public interface IOrderItem : INotifyPropertyChanged
     {
         double Price { get; }
 
