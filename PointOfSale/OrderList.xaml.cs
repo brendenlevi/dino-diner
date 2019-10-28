@@ -22,11 +22,20 @@ namespace PointOfSale
     public partial class OrderList : UserControl
     {
         public NavigationService NavigationService { get; set; }
+
+        /// <summary>
+        /// Initializes the OrderList page
+        /// </summary>
         public OrderList()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Removes the item when the red x is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void RemoveItem(object sender, RoutedEventArgs args)
         {
             if( DataContext is Order order)

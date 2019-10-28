@@ -23,7 +23,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Path=Description}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="15"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="0, 0, 5, 0" Text="{Binding Path=Description}"/>
+                            <Button Click="RemoveItem" Grid.Column="1" Background="Red" Foreground="White">X</Button>
+                        </Grid>
                         <ListBox ItemsSource="{Binding Path=Special}" BorderThickness="0"/>
                     </StackPanel>
                 </DataTemplate>
