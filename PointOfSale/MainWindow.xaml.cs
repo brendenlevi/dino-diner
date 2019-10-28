@@ -27,7 +27,7 @@ namespace PointOfSale
             Order order = DataContext as Order;
         }
 
-        private void PassDataContentToPage()
+        public void PassDataContentToPage()
         {
             if(OrderUI.Content is Page page)
             {
@@ -35,14 +35,19 @@ namespace PointOfSale
             }
         }
 
-        private void OnLoadCompleted(object sender, NavigationEventArgs args)
+        public void OnLoadCompleted(object sender, NavigationEventArgs args)
         {
             PassDataContentToPage();
         }
 
-        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs args)
+        public void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
             PassDataContentToPage();
+        }
+
+        public void OnReturnToCategorySelection(object sender, RoutedEventArgs args)
+        {
+            OrderUI.NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }
