@@ -390,7 +390,7 @@ namespace MenuTest
             JurassicJava java = new JurassicJava();
             Assert.PropertyChanged(java, "Special", () =>
             {
-                java.LeaveRoomForCream();
+                java.LeaveSpaceForCream();
             });
         }
 
