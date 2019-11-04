@@ -27,13 +27,29 @@ namespace PointOfSale
         private PrehistoricPBJ pbj;
 
         /// <summary>
-        /// Initializes the CustomizePrehistoricPBJ page when a pbj is given.
+        /// Private combo to handle if it's from a combo
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Initializes the CustomizePrehistoricPBJ page when a entree is given.
         /// </summary>
         /// <param name="pbj">Given PrehistoricPBJ.</param>
         public CustomizePrehistoricPBJ(PrehistoricPBJ pbj)
         {
             InitializeComponent();
             this.pbj = pbj;
+        }
+
+        /// <summary>
+        /// Initializes the CustomizePrehistoricPBJ page when a combo is given.
+        /// </summary>
+        /// <param name="pbj">Given PrehistoricPBJ.</param>
+        public CustomizePrehistoricPBJ(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            this.pbj = (PrehistoricPBJ)combo.Entree;
         }
 
         /// <summary>
@@ -63,7 +79,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.GoBack();
+            if (combo != null)
+            {
+                NavigationService.Navigate(new CustomizeCombo(combo));
+            }
+            else
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

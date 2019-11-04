@@ -27,13 +27,29 @@ namespace PointOfSale
         private SteakosaurusBurger steak;
 
         /// <summary>
-        /// Initializes the CustomizeSteakosaurusBurger page when a pbj is given.
+        /// Private combo to handle if it's from a combo
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Initializes the CustomizeSteakosaurusBurger page when a entree is given.
         /// </summary>
         /// <param name="steak">Given SteakosaurusBurger.</param>
         public CustomizeSteakosaurusBurger(SteakosaurusBurger steak)
         {
             InitializeComponent();
             this.steak = steak;
+        }
+
+        /// <summary>
+        /// Initializes the CustomizeSteakosaurusBurger page when a combo is given.
+        /// </summary>
+        /// <param name="steak">Given SteakosaurusBurger.</param>
+        public CustomizeSteakosaurusBurger(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            this.steak = (SteakosaurusBurger)combo.Entree;
         }
 
         /// <summary>
@@ -83,7 +99,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.GoBack();
+            if (combo != null)
+            {
+                NavigationService.Navigate(new CustomizeCombo(combo));
+            }
+            else
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

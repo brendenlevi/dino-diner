@@ -27,13 +27,29 @@ namespace PointOfSale
         private TRexKingBurger trex;
 
         /// <summary>
-        /// Initializes the CustomizeTRexKingBurger page when a pbj is given.
+        /// Private combo to handle if it's from a combo
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Initializes the CustomizeTRexKingBurger page when a entree is given.
         /// </summary>
         /// <param name="trex">Given TRexKingBurger.</param>
         public CustomizeTRexKingBurger(TRexKingBurger trex)
         {
             InitializeComponent();
             this.trex = trex;
+        }
+
+        /// <summary>
+        /// Initializes the CustomizeTRexKingBurger page when a combo is given.
+        /// </summary>
+        /// <param name="trex">Given TRexKingBurger.</param>
+        public CustomizeTRexKingBurger(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            this.trex = (TRexKingBurger)combo.Entree;
         }
 
         /// <summary>
@@ -123,7 +139,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.GoBack();
+            if (combo != null)
+            {
+                NavigationService.Navigate(new CustomizeCombo(combo));
+            }
+            else
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

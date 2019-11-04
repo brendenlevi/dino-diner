@@ -27,13 +27,29 @@ namespace PointOfSale
         private VelociWrap wrap;
 
         /// <summary>
-        /// Initializes the CustomizeVelociWrap page when a pbj is given.
+        /// Private combo to handle if it's from a combo
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Initializes the CustomizeVelociWrap page when an entree is given.
         /// </summary>
         /// <param name="wrap">Given VelociWrap.</param>
         public CustomizeVelociWrap(VelociWrap wrap)
         {
             InitializeComponent();
             this.wrap = wrap;
+        }
+
+        /// <summary>
+        /// Initializes the CustomizeVelociWrap page when a combo is given.
+        /// </summary>
+        /// <param name="wrap">Given VelociWrap.</param>
+        public CustomizeVelociWrap(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            this.wrap = (VelociWrap)combo.Entree;
         }
 
         /// <summary>
@@ -73,7 +89,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.GoBack();
+            if (combo != null)
+            {
+                NavigationService.Navigate(new CustomizeCombo(combo));
+            }
+            else
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }

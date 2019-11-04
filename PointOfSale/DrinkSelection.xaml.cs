@@ -213,6 +213,7 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
+                drink = new JurassicJava();
                 if (combo != null)
                 {
                     combo.Drink = drink;
