@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -20,14 +21,38 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboSelection : Page
     {
+        /// <summary>
+        /// Private combo field used for customizing.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Initializes the ComboSelection page.
+        /// </summary>
         public ComboSelection()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Creates the combo for the customize brontowurst combo page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        void CustomizeBrontowurstCombo(object sender, RoutedEventArgs args)
+        {
+            if (DataContext is Order order)
+            {
+                Brontowurst brontowurst = new Brontowurst();
+                combo = new CretaceousCombo(brontowurst);
+                order.Add(combo);
+                NavigationService.Navigate(new CustomizeBrontowurst(combo));
+            }
+        }
+
+
         void CustomizeCombo(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new CustomizeCombo());
         }
     }
 }

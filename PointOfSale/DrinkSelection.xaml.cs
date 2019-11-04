@@ -22,7 +22,15 @@ namespace PointOfSale
     /// </summary>
     public partial class DrinkSelection : Page
     {
+        /// <summary>
+        /// Private side variable using for customizing.
+        /// </summary>
         private Drink drink;
+
+        /// <summary>
+        /// Private combo to handle if it's from a combo
+        /// </summary>
+        private CretaceousCombo combo;
 
         /// <summary>
         /// Initializes the drink page when a drink is not given.
@@ -66,6 +74,15 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Initializes the drink page when a combo is given.
+        /// </summary>
+        public DrinkSelection(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+        }
+
+        /// <summary>
         /// Adds Select Flavor and Hold Ice button
         /// on Sodasaurus Click.
         /// </summary>
@@ -96,7 +113,14 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Sodasaurus();
-                order.Add(drink);
+                if (combo != null)
+                {
+                    combo.Drink = drink;
+                }
+                else
+                {
+                    order.Add(drink);
+                }
             }
 
         }
@@ -140,7 +164,14 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Tyrannotea();
-                order.Add(drink);
+                if (combo != null)
+                {
+                    combo.Drink = drink;
+                }
+                else
+                {
+                    order.Add(drink);
+                }
             }
         }
 
@@ -182,8 +213,14 @@ namespace PointOfSale
 
             if (DataContext is Order order)
             {
-                drink = new JurassicJava();
-                order.Add(drink);
+                if (combo != null)
+                {
+                    combo.Drink = drink;
+                }
+                else
+                {
+                    order.Add(drink);
+                }
             }
         }
 
@@ -218,7 +255,14 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 drink = new Water();
-                order.Add(drink);
+                if (combo != null)
+                {
+                    combo.Drink = drink;
+                }
+                else
+                {
+                    order.Add(drink);
+                }
             }
         }
 
@@ -229,7 +273,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (combo != null)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>
@@ -250,7 +301,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnChangeSize(object sender, RoutedEventArgs args)
         {
-            if (sender is FrameworkElement element) drink.Size = (DDsize)Enum.Parse(typeof(DDsize), element.Tag.ToString());
+            if (sender is FrameworkElement element)
+            {
+                drink.Size = (DDsize)Enum.Parse(typeof(DDsize), element.Tag.ToString());
+                if (combo != null)
+                {
+                    combo.Drink.Size = drink.Size;
+                }
+            }
         }
 
         /// <summary>
@@ -260,7 +318,14 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnSelectAddIce(object sender, RoutedEventArgs args)
         {
-            if (drink is JurassicJava java) java.AddIce();
+            if (drink is JurassicJava java)
+            {
+                java.AddIce();
+                if(combo != null)
+                {
+                    combo.Drink.Ice = true;
+                }
+            }
         }
 
         /// <summary>
@@ -271,6 +336,10 @@ namespace PointOfSale
         private void OnSelectHoldIce(object sender, RoutedEventArgs args)
         {
             drink.HoldIce();
+            if (combo != null)
+            {
+                combo.Drink.Ice = false;
+            }
         }
 
         /// <summary>
@@ -280,7 +349,10 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnSelectAddLemon(object sender, RoutedEventArgs args)
         {
-            if(drink is Water water) water.AddLemon();
+            if (drink is Water water)
+            {
+                water.AddLemon();
+            }
             if(drink is Tyrannotea tea) tea.AddLemon();
         }
 

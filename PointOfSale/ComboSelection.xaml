@@ -21,7 +21,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Click="CustomizeCombo" Grid.Column="0" Grid.Row="0">
+        <Button Click="CustomizeBrontowurstCombo" Grid.Column="0" Grid.Row="0">
             <StackPanel>
                 <Image Height="100" Width="100" Source="dino-diner-images/DinoDiner-01.png" />
                 <TextBlock FontSize="20">Brontowurst Combo</TextBlock>

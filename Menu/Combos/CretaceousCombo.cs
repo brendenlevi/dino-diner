@@ -47,7 +47,9 @@ namespace DinoDiner.Menu
             }
         }
 
-        // Side for Combo
+        /// <summary>
+        /// Gets and sets the side
+        /// </summary>
         private Side side;
         public Side Side
         {
@@ -56,14 +58,17 @@ namespace DinoDiner.Menu
             {
                 side = value;
                 side.Size = size;
-                side.PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
-                {
-                    NotifyOfPropertyChanged(args.PropertyName);
-                };
+                NotifyOfPropertyChanged("Ingredients");
+                NotifyOfPropertyChanged("Special");
+                NotifyOfPropertyChanged("Price");
+                NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Special");
             }
         }
 
-        // Drink for Combo
+        /// <summary>
+        /// Gets and sets the drink
+        /// </summary>
         private Drink drink;
         public Drink Drink
         {
@@ -76,10 +81,13 @@ namespace DinoDiner.Menu
                 NotifyOfPropertyChanged("Special");
                 NotifyOfPropertyChanged("Price");
                 NotifyOfPropertyChanged("Calories");
+                NotifyOfPropertyChanged("Special");
             }
         }
 
-        // Price which is all items added together minus 25 cetns.
+        /// <summary>
+        /// Gets the price
+        /// </summary>
         public double Price
         {
             get
@@ -88,7 +96,9 @@ namespace DinoDiner.Menu
             }
         }
 
-        // Calories are all item calories added together
+        /// <summary>
+        /// Gets the calories
+        /// </summary>
         public uint Calories
         {
             get
@@ -97,7 +107,9 @@ namespace DinoDiner.Menu
             }
         }
 
-        // Updates the size of all items when combo size is changed
+        /// <summary>
+        /// Gets and sets the size
+        /// </summary>
         public Size Size
         {
             get { return size; }
