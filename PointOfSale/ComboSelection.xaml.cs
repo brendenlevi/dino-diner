@@ -50,7 +50,6 @@ namespace PointOfSale
             }
         }
 
-
         void CustomizeCombo(object sender, RoutedEventArgs args)
         {
         }
