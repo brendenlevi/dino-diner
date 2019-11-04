@@ -58,6 +58,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.combo = combo;
+            this.side = combo.Side;
         }
 
         /// <summary>

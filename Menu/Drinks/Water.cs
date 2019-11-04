@@ -66,6 +66,7 @@ namespace DinoDiner.Menu
         {
             Lemon = true;
             ingredients.Add("Lemon");
+            NotifyOfPropertyChanged("Ingredients");
             NotifyOfPropertyChanged("Special");
         }
 
@@ -76,6 +77,7 @@ namespace DinoDiner.Menu
         {
             Lemon = false;
             ingredients.Remove("Lemon");
+            NotifyOfPropertyChanged("Ingredients");
             NotifyOfPropertyChanged("Special");
         }
 

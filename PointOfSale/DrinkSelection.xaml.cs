@@ -80,6 +80,7 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.combo = combo;
+            this.drink = combo.Drink;
         }
 
         /// <summary>
