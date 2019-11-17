@@ -1,0 +1,67 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+<h1>Menu</h1>
+
+<div id="Combos">
+    <h2>Combos</h2>
+    @for (int i = 0; i < Model.Menu.AvailableCombos.Count; i++)
+    {
+        <div class="menu-item">
+            <h3>@Model.Menu.AvailableCombos[i].ToString()</h3>
+            <ul>
+                <li>$@Model.Menu.AvailableCombos[i].Price</li>
+                <li>@Model.Menu.AvailableCombos[i].Calories</li>
+                <li>@string.Join(", ", Model.Menu.AvailableCombos[i].Ingredients)</li>
+            </ul>
+        </div>
+    }
+</div>
+
+<div id="Entrees">
+    <h2>Entrees</h2>
+    @for (int i = 0; i < Model.Menu.AvailableEntrees.Count; i++)
+    {
+        <div class="menu-item">
+            <h3>@Model.Menu.AvailableEntrees[i].ToString()</h3>
+            <ul>
+                <li>$@Model.Menu.AvailableEntrees[i].Price</li>
+                <li>@Model.Menu.AvailableEntrees[i].Calories</li>
+                <li>@string.Join(", ", Model.Menu.AvailableEntrees[i].Ingredients)</li>
+            </ul>
+        </div>
+    }
+</div>
+
+<div id="Sides">
+    <h2>Sides</h2>
+    @for (int i = 0; i < Model.Menu.AvailableSides.Count; i++)
+    {
+        <div class="menu-item">
+            <h3>@Model.Menu.AvailableSides[i].ToString()</h3>
+            <ul>
+                <li>$@Model.Menu.AvailableSides[i].Price</li>
+                <li>@Model.Menu.AvailableSides[i].Calories</li>
+                <li>@string.Join(", ", Model.Menu.AvailableSides[i].Ingredients)</li>
+            </ul>
+        </div>
+    }
+</div>
+
+
+<div id="Drinks">
+    <h2>Drinks</h2>
+    @for (int i = 0; i < Model.Menu.AvailableDrinks.Count; i++)
+    {
+        <div class="menu-item">
+            <h3>@Model.Menu.AvailableDrinks[i].ToString()</h3>
+            <ul>
+                <li>$@Model.Menu.AvailableDrinks[i].Price</li>
+                <li>@Model.Menu.AvailableDrinks[i].Calories</li>
+                <li>@string.Join(", ", Model.Menu.AvailableDrinks[i].Ingredients)</li>
+            </ul>
+        </div>
+    }
+</div>
