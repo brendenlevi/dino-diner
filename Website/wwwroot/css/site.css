@@ -12,20 +12,28 @@ body {
     padding-right: 15px;
 }
 
-.menu-div{
-    display:none;
+.content {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
 }
 
-.menu-button {
-    background-color: #4CAF50;
-    border: solid 1px black;
-    color: white;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+form {
+    width: 300px;
+    background-color: lightgray;
+    flex-grow: 0;
+    padding: 25px;
 }
-.menu-button:hover{
-    background-color:blue;
+
+h4 {
+    margin-bottom: 5px;
+}
+
+.menu-category-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.price{
+    width: 100px;
 }
