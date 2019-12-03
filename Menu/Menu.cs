@@ -64,7 +64,7 @@ namespace DinoDiner.Menu
             get
             {
                 List<Entree> availableEntrees = new List<Entree>();
-                foreach (IMenuItem item in this.AvailableMenuItems){
+                foreach (IMenuItem item in this.AvailableMenuItems) {
                     if (item is Entree)
                     {
                         availableEntrees.Add((Entree)item);
@@ -122,6 +122,24 @@ namespace DinoDiner.Menu
                     }
                 }
                 return availableCombos;
+            }
+        }
+
+        // All Available Ingredients
+        public HashSet<string> AvailableIngredients
+        {
+            get {
+                HashSet<string> ingredients = new HashSet<string>();
+
+                foreach(IMenuItem item in this.AvailableMenuItems)
+                {
+                    foreach(string ingredient in item.Ingredients)
+                    {
+                        ingredients.Add(ingredient);
+                    }
+                }
+
+                return ingredients;
             }
         }
 

@@ -23,6 +23,8 @@ form {
     background-color: lightgray;
     flex-grow: 0;
     padding: 25px;
+    margin-left:15px;
+    float:right;
 }
 
 h4 {
@@ -36,4 +38,9 @@ h4 {
 
 .price{
     width: 100px;
+}
+
+.ingredient-list{
+    display:flex;
+    flex-direction:column;
 }
